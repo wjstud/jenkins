@@ -16,12 +16,18 @@ pipeline {
     }
     stage('build') {
       steps {
-        sh 'sudo -H pip install -r requirements.txt'
+        dir(path: '/home/shiyanlou/test_git') {
+          sh 'sudo pip install -r requirements.txt'
+        }
+
       }
     }
     stage('run') {
       steps {
-        sh 'python app.py'
+        dir(path: '/home/shiyanlou/test_git') {
+          sh 'python app.py'
+        }
+
       }
     }
   }
